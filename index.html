@@ -561,6 +561,8 @@
       <li><a href="#experience" class="nav-link">Experience</a></li>
       <li><a href="#education" class="nav-link">Education</a></li>
       <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="https://redherring.dk" target="_blank" rel="noopener" class="nav-link">Red Herring</a></li>
+      <li><a href="#" class="nav-link" onclick="event.preventDefault(); closeMenu(); openGallery();">Gallery</a></li>
     </ul>
   </nav>
 
@@ -810,6 +812,11 @@
   </style>
 
   <script>
+    function closeMenu() {
+      document.getElementById('navToggle').classList.remove('open');
+      document.getElementById('navMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
     function openGallery() {
       document.getElementById('galleryOverlay').style.display = 'block';
       document.body.style.overflow = 'hidden';
