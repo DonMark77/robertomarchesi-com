@@ -663,6 +663,9 @@
         <div>
           <h3 class="exp-role">Academic Director</h3>
           <p class="exp-desc">Developed and led the art and design curriculum, ensuring structure, quality, and progression across the programme. Also contributed as guest instructor at Tegneskolen KBH.</p>
+          <div style="text-align:center; margin-top:0.75rem;">
+            <button onclick="openGallery()" class="btn btn-secondary" style="color: var(--accent); cursor:pointer;">Open Paintings Gallery</button>
+          </div>
         </div>
       </div>
 
@@ -760,7 +763,84 @@
     © 2026 Roberto Marchesi
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" style="display:none; position:fixed; inset:0; z-index:600; background:rgba(0,0,0,0.92); display:none; align-items:center; justify-content:center; flex-direction:column;">
+    <button onclick="closeLightbox()" style="position:absolute; top:1rem; right:1.25rem; background:none; border:none; color:#fff; font-size:2rem; cursor:pointer; line-height:1;" aria-label="Close">✕</button>
+    <img id="lightboxImg" src="" alt="" style="max-width:92vw; max-height:85vh; object-fit:contain; display:block;">
+  </div>
+
+  <!-- GALLERY OVERLAY -->
+  <div id="galleryOverlay" style="display:none; position:fixed; inset:0; z-index:500; background:var(--bg); overflow-y:auto;">
+    <div style="position:sticky; top:0; z-index:10; background:rgba(245,243,239,0.96); backdrop-filter:blur(8px); border-bottom:1px solid var(--rule); display:flex; justify-content:space-between; align-items:center; padding:1rem 1.25rem;">
+      <span style="font-family:'Raleway',sans-serif; font-size:1rem; letter-spacing:0.1em; text-transform:uppercase;">Paintings</span>
+      <button onclick="closeGallery()" style="background:none; border:none; cursor:pointer; font-size:1.5rem; color:var(--ink); line-height:1;" aria-label="Close gallery">✕</button>
+    </div>
+    <div style="padding:1.5rem 1.25rem; max-width:1100px; margin:0 auto;">
+      <p style="font-size:0.85rem; color:var(--muted); margin-bottom:2rem;">A selection of paintings by Roberto Marchesi.</p>
+      <div style="columns: 2; gap: 1rem;">
+        <div class="paint-item"><img src="Art/painting_01.jpg" alt="Painting 1" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_02.jpg" alt="Painting 2" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_03.jpg" alt="Painting 3" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_04.jpg" alt="Painting 4" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_05.jpg" alt="Painting 5" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_06.jpg" alt="Painting 6" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_07.jpg" alt="Painting 7" onclick="openLightbox(this)"></div>
+        <div class="paint-item"><img src="Art/painting_08.jpg" alt="Painting 8" onclick="openLightbox(this)"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .paint-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    .paint-item img {
+      width: 100%;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+      cursor: pointer;
+    }
+    .paint-item img:hover { filter: none; }
+    @media (min-width: 600px) {
+      #galleryOverlay > div:last-child { padding: 2rem 2.5rem; }
+      #galleryOverlay [style*="columns"] { columns: 3; }
+    }
+  </style>
+
   <script>
+    function openGallery() {
+      document.getElementById('galleryOverlay').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('galleryOverlay').scrollTop = 0;
+    }
+    function closeGallery() {
+      document.getElementById('galleryOverlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function openLightbox(img) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = img.src;
+      lb.style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('lightbox').style.display === 'flex') closeLightbox();
+        else closeGallery();
+      }
+    });
+
+    // Tap dark area behind lightbox image to close
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
     // Hamburger menu
     const toggle = document.getElementById('navToggle');
     const menu = document.getElementById('navMenu');
