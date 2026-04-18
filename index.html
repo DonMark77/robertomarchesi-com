@@ -162,10 +162,28 @@
         rgba(0,0,0,0.0) 100%);
     }
 
-    .hero-invaders {
+    /* Outer wrapper: stays in place, holds the silhouette mask.
+       Radial gradient = soft dark oval where the face is, white (show bricks) everywhere else. */
+    .hero-invaders-wrapper {
       position: absolute;
       inset: 0;
       z-index: 1;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse 18% 38% at 52% 62%, black 30%, white 75%);
+      mask-image:         radial-gradient(ellipse 18% 38% at 52% 62%, black 30%, white 75%);
+    }
+
+    @media (max-width: 899px) {
+      .hero-invaders-wrapper {
+        -webkit-mask-image: radial-gradient(ellipse 28% 36% at 62% 58%, black 30%, white 75%);
+        mask-image:         radial-gradient(ellipse 28% 36% at 62% 58%, black 30%, white 75%);
+      }
+    }
+
+    /* Inner div: does the horizontal shift */
+    .hero-invaders {
+      position: absolute;
+      inset: 0;
       pointer-events: none;
       will-change: transform;
       transform: translateX(-24%);
@@ -613,7 +631,8 @@
       <img src="Profile_images/Profile_02.jpg" alt="Roberto Marchesi">
     </div>
 
-    <!-- Space Invaders parallax layer -->
+    <!-- Brick parallax layer — outer div holds the silhouette mask, inner div shifts -->
+    <div class="hero-invaders-wrapper">
     <div class="hero-invaders">
       <svg width="130%" height="100%" xmlns="http://www.w3.org/2000/svg" fill="white">
         <defs>
@@ -660,6 +679,7 @@
         <use href="#b1" x="90%" y="14%" width="12" height="17" opacity="0.60"/>
         <use href="#b3" x="46%" y="42%" width="30" height="17" opacity="0.52"/>
       </svg>
+    </div>
     </div>
 
     <div class="hero-content">
