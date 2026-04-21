@@ -162,21 +162,20 @@
         rgba(0,0,0,0.0) 100%);
     }
 
-    /* Outer wrapper: stays in place, holds the silhouette mask.
-       Radial gradient = soft dark oval where the face is, white (show bricks) everywhere else. */
+    /* Outer wrapper: right-side band — bricks fade in from 55% and show fully from 70% */
     .hero-invaders-wrapper {
       position: absolute;
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      -webkit-mask-image: radial-gradient(ellipse 18% 38% at 52% 62%, black 30%, white 75%);
-      mask-image:         radial-gradient(ellipse 18% 38% at 52% 62%, black 30%, white 75%);
+      -webkit-mask-image: linear-gradient(to right, black 55%, white 72%);
+      mask-image:         linear-gradient(to right, black 55%, white 72%);
     }
 
     @media (max-width: 899px) {
       .hero-invaders-wrapper {
-        -webkit-mask-image: radial-gradient(ellipse 28% 36% at 62% 58%, black 30%, white 75%);
-        mask-image:         radial-gradient(ellipse 28% 36% at 62% 58%, black 30%, white 75%);
+        -webkit-mask-image: linear-gradient(to right, black 50%, white 68%);
+        mask-image:         linear-gradient(to right, black 50%, white 68%);
       }
     }
 
