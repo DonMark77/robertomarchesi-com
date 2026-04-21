@@ -162,24 +162,14 @@
         rgba(0,0,0,0.0) 100%);
     }
 
-    /* Outer wrapper: right-side band — bricks fade in from 55% and show fully from 70% */
+    /* Wrapper: positions the layer */
     .hero-invaders-wrapper {
       position: absolute;
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to right, black 55%, white 72%);
-      mask-image:         linear-gradient(to right, black 55%, white 72%);
     }
 
-    @media (max-width: 899px) {
-      .hero-invaders-wrapper {
-        -webkit-mask-image: linear-gradient(to right, black 50%, white 68%);
-        mask-image:         linear-gradient(to right, black 50%, white 68%);
-      }
-    }
-
-    /* Inner div: does the horizontal shift */
     .hero-invaders {
       position: absolute;
       inset: 0;
@@ -200,15 +190,17 @@
 
     .hero-label {
       display: inline-block;
+      width: fit-content;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #fff;
       background: var(--accent);
-      padding: 0.4rem 1rem;
+      padding: 0.5rem 1rem;
       border-radius: 0;
       margin-bottom: 1.25rem;
+      line-height: 1.6;
     }
 
     .hero-name {
@@ -665,24 +657,24 @@
           </symbol>
         </defs>
 
-        <use href="#b4" x="4%"  y="7%"  width="38" height="17" opacity="0.60"/>
-        <use href="#b3" x="70%" y="6%"  width="30" height="17" opacity="0.58"/>
-        <use href="#b2" x="52%" y="20%" width="21" height="17" opacity="0.62"/>
-        <use href="#b4" x="18%" y="30%" width="38" height="17" opacity="0.55"/>
-        <use href="#b1" x="84%" y="32%" width="12" height="17" opacity="0.60"/>
-        <use href="#b3" x="38%" y="14%" width="30" height="17" opacity="0.56"/>
-        <use href="#b2" x="8%"  y="52%" width="21" height="17" opacity="0.52"/>
-        <use href="#b1" x="62%" y="48%" width="12" height="17" opacity="0.58"/>
-        <use href="#b4" x="78%" y="50%" width="38" height="17" opacity="0.54"/>
-        <use href="#b2" x="28%" y="58%" width="21" height="17" opacity="0.50"/>
-        <use href="#b1" x="90%" y="14%" width="12" height="17" opacity="0.60"/>
-        <use href="#b3" x="46%" y="42%" width="30" height="17" opacity="0.52"/>
+        <use href="#b4" x="76%" y="6%"  width="46" height="20" opacity="0.78"/>
+        <use href="#b1" x="91%" y="10%" width="14" height="20" opacity="0.75"/>
+        <use href="#b3" x="80%" y="18%" width="36" height="20" opacity="0.76"/>
+        <use href="#b2" x="87%" y="26%" width="25" height="20" opacity="0.80"/>
+        <use href="#b4" x="75%" y="36%" width="46" height="20" opacity="0.74"/>
+        <use href="#b1" x="92%" y="30%" width="14" height="20" opacity="0.78"/>
+        <use href="#b3" x="82%" y="46%" width="36" height="20" opacity="0.72"/>
+        <use href="#b2" x="76%" y="56%" width="25" height="20" opacity="0.70"/>
+        <use href="#b4" x="88%" y="50%" width="46" height="20" opacity="0.72"/>
+        <use href="#b1" x="74%" y="64%" width="14" height="20" opacity="0.76"/>
+        <use href="#b3" x="84%" y="62%" width="36" height="20" opacity="0.74"/>
+        <use href="#b2" x="89%" y="20%" width="25" height="20" opacity="0.78"/>
       </svg>
     </div>
     </div>
 
     <div class="hero-content">
-      <p class="hero-label">Senior Project &amp; Product Manager</p>
+      <span class="hero-label">Senior Project<br>&amp; Product Manager</span>
       <h1 class="hero-name">Roberto<br>Marchesi</h1>
       <div class="hero-rule"></div>
       <p class="hero-bio">
